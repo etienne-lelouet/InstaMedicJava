@@ -58,6 +58,7 @@ public class Modele {
         }
     }
 
+<<<<<<< HEAD
 //    public static ArrayList<Patient> selectAllPatients(Medecin unMedecin) {
 //        ArrayList<Patient> lesClients = new ArrayList<Patient>();
 //        String requete = "SELECT t2.nom, t2.prenom, t3.iddossier" +
@@ -87,6 +88,37 @@ public class Modele {
 //        }
 //        return lesClients;
 //    }
+=======
+    public static ArrayList<Patient> selectAllPatients(Medecin unMedecin) {
+        ArrayList<Patient> lesClients = new ArrayList<Patient>();
+        String requete = "SELECT t2.nom, t2.prenom, t3.iddossier" +
+                        " FROM lien t1, Personne t2, Patient t3" +
+                        " WHERE t1.idMedecin =" + unMedecin.getIdMedecin() +
+                        " AND t1.idPatient = t2.idPersonne" +
+                        " AND t1.idPatient = t3.idPersonne" +
+                        " ORDER BY nom ASC";
+        Bdd uneBdd = new Bdd();
+        try {
+            uneBdd.seConnecter();
+            Statement unStat = uneBdd.getMaConnexion().createStatement();
+            ResultSet unRes = unStat.executeQuery(requete);
+            while (unRes.next()) {
+                int idclient = unRes.getInt("idclient");
+                String nom = unRes.getString("nom");
+                String prenom = unRes.getString("prenom");
+                String adresse = unRes.getString("adressse");
+                Patient unPatient = new Patient(idclient, nom, prenom, adresse);
+                lesClients.add(unPatient);
+            }
+            unStat.close();
+            unRes.close();
+            uneBdd.seDeConnceter();
+        } catch (SQLException exp) {
+            System.out.println("Erreur : " + requete);
+        }
+        return lesClients;
+    }
+>>>>>>> e1e79a60a2bb3f227a4a00cb27ca2d70425fbf29
 //
 //    public static void insertClient(Client unClient) {
 //        String requete = "insert into client values (null, '" + unClient.getNom()
