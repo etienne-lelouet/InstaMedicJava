@@ -18,7 +18,7 @@ public class Modele {
                 + " WHERE t1.idPersonne = t2.idPersonne"
                 + " AND t2.idSpecialite = t3.idSpecialite"
                 + " AND STATUS =2"
-                + " AND login =\"" + login + "\""
+                + " AND login =\"" + login + "\" "
                 + " AND PASSWORD =\"" + mdp + "\"";
                 
         Bdd uneBdd = new Bdd();
