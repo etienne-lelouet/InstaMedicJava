@@ -42,7 +42,7 @@ public class VuePatients extends JFrame implements ActionListener, KeyListener {
 
         //On initialise la JFRAME
         this.setTitle("Selectionnez un Patient");
-        this.setBounds(100, 0, 1000, 700);
+        this.setBounds(100, 0, 1000, 700);//résolution de l'écran
         //Layout: matrice
         this.setLayout(null);
         this.setResizable(false);
@@ -56,7 +56,7 @@ public class VuePatients extends JFrame implements ActionListener, KeyListener {
         //On crée la string de texte du Label
         String textLabel = "Bienvenue Dr. " + prenomMedecin + " " + nomMedecin + ", veuillez selectionner un patient";
         JLabel Label1 = new JLabel(textLabel);
-        Label1.setBounds(50, 50, 900, 50);
+        Label1.setBounds(50, 50, 900, 600);
         unPanel.add(Label1);
         this.unPanel.setVisible(true);
         this.add(this.unPanel);
@@ -108,7 +108,7 @@ public class VuePatients extends JFrame implements ActionListener, KeyListener {
         });
         //affichage de la jtable dans une scroll table
         JScrollPane uneScroll = new JScrollPane(this.tableClients);
-        uneScroll.setBounds(20, 20, 600, 250);
+        uneScroll.setBounds(110, 120,780,400);    //le cadre blanc
         uneScroll.setBackground(Color.black);
         this.add(uneScroll);
         
