@@ -1,4 +1,4 @@
-//2
+
 package vue;
 
 import java.awt.Color;
@@ -108,10 +108,10 @@ public class VuePatients extends JFrame implements ActionListener, KeyListener {
         });
         //affichage de la jtable dans une scroll table
         JScrollPane uneScroll = new JScrollPane(this.tableClients);
-        uneScroll.setBounds(110, 120,780,400);    //le cadre blanc
+        uneScroll.setBounds(110, 120, 780, 400);    //le cadre blanc
         uneScroll.setBackground(Color.black);
         this.add(uneScroll);
-        
+
         //changer icone application
         ImageIcon logopetit = new ImageIcon("src/images/logoPetit.png");
         this.setIconImage(logopetit.getImage());
