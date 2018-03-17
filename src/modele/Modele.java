@@ -165,55 +165,55 @@ public class Modele {
 //        }
 //    }
 //    /**
-//     * ********* Modele des Techniciens ****************
-//     */
-//    public static ArrayList<Technicien> selectAllTechniciens() {
-//        ArrayList<Technicien> lesTechniciens = new ArrayList<Technicien>();
-//        String requete = "Select * from technicien ; ";
-//        Bdd uneBdd = new Bdd();
-//        try {
-//            uneBdd.seConnecter();
-//            Statement unStat = uneBdd.getMaConnexion().createStatement();
-//            ResultSet unRes = unStat.executeQuery(requete);
-//            while (unRes.next()) {
-//                int idTech = unRes.getInt("idtech");
-//                String nom = unRes.getString("nom");
-//                String prenom = unRes.getString("prenom");
-//                String competence = unRes.getString("competence");
-//                Technicien unTechnicien = new Technicien(idTech, nom, prenom, competence);
-//                lesTechniciens.add(unTechnicien);
-//            }
-//            unStat.close();
-//            unRes.close();
-//            uneBdd.seDeConnceter();
-//        } catch (Exception exp) {
-//            System.out.println("Erreur : " + requete);
-//        }
-//        return lesTechniciens;
-//    }
-//
-//    public static Technicien selectWhereTechnicien(Technicien unTechnicien) {
-//        String requete = "Select * from Technicien where idtech = " + unTechnicien.getIdTech();
-//        Technicien unTechResultat = null;
-//        Bdd uneBdd = new Bdd();
-//        try {
-//            uneBdd.seConnecter();
-//            Statement unStat = uneBdd.getMaConnexion().createStatement();
-//            ResultSet unRes = unStat.executeQuery(requete);
-//            while (unRes.next()) {
-//                int idTech = unRes.getInt("idtech");
-//                String nom = unRes.getString("nom");
-//                String prenom = unRes.getString("prenom");
-//                String competence = unRes.getString("competence");
-//                unTechResultat = new Technicien(idTech, nom, prenom, competence);
-//            }
-//            unStat.close();
-//            unRes.close();
-//            uneBdd.seDeConnceter();
-//        } catch (Exception exp) {
-//            System.out.println("Erreur : " + requete);
-//        }
-//        return unTechResultat;
-//    }
+     /* ********* Modele des Techniciens ****************
+     */
+    public static ArrayList<Technicien> selectAllTechniciens() {
+        ArrayList<Technicien> lesTechniciens = new ArrayList<Technicien>();
+        String requete = "Select * from technicien ; ";
+        Bdd uneBdd = new Bdd();
+        try {
+            uneBdd.seConnecter();
+            Statement unStat = uneBdd.getMaConnexion().createStatement();
+            ResultSet unRes = unStat.executeQuery(requete);
+            while (unRes.next()) {
+                int idTech = unRes.getInt("idtech");
+                String nom = unRes.getString("nom");
+                String prenom = unRes.getString("prenom");
+                String competence = unRes.getString("competence");
+                Technicien unTechnicien = new Technicien(idTech, nom, prenom, competence);
+                lesTechniciens.add(unTechnicien);
+            }
+            unStat.close();
+            unRes.close();
+            uneBdd.seDeConnceter();
+        } catch (Exception exp) {
+            System.out.println("Erreur : " + requete);
+        }
+        return lesTechniciens;
+    }
+
+    public static Technicien selectWhereTechnicien(Technicien unTechnicien) {
+        String requete = "Select * from Technicien where idtech = " + unTechnicien.getIdTech();
+        Technicien unTechResultat = null;
+        Bdd uneBdd = new Bdd();
+        try {
+            uneBdd.seConnecter();
+            Statement unStat = uneBdd.getMaConnexion().createStatement();
+            ResultSet unRes = unStat.executeQuery(requete);
+            while (unRes.next()) {
+                int idTech = unRes.getInt("idtech");
+                String nom = unRes.getString("nom");
+                String prenom = unRes.getString("prenom");
+                String competence = unRes.getString("competence");
+                unTechResultat = new Technicien(idTech, nom, prenom, competence);
+            }
+            unStat.close();
+            unRes.close();
+            uneBdd.seDeConnceter();
+        } catch (Exception exp) {
+            System.out.println("Erreur : " + requete);
+        }
+        return unTechResultat;
+    }
 
 }

@@ -50,7 +50,7 @@ public class VueTechs extends JPanel implements ActionListener
 			String tab[] = chaine.split(" - ");
 			int idtech = Integer.parseInt(tab[0]);
 			Technicien unTechnicien = new Technicien(idtech, tab[1], tab[2],"");
-			unTechnicien = Modele.selectWhereTechnicien(unTechnicien);
+			//unTechnicien = Modele.selectWhereTechnicien(unTechnicien);
 			this.areaTech.setText("technicien sélectionné :\n"
 									+ "Id Tech : " + unTechnicien.getIdTech() + "\n"
 									+ "Nom Tech : " + unTechnicien.getNom() + "\n"
@@ -62,10 +62,10 @@ public class VueTechs extends JPanel implements ActionListener
 	}
 	public void remplirCBX()
 	{
-		ArrayList<Technicien> lesTechniciens = Modele.selectAllTechniciens();
-		for (Technicien unTechnicien : lesTechniciens)
-		{
-			this.cbxTechnicien.addItem(unTechnicien.getIdTech() + " - " + unTechnicien.getNom() + " - " + unTechnicien.getPrenom() );
-		}
+//		ArrayList<Technicien> lesTechniciens = Modele.selectAllTechniciens();
+//		for (Technicien unTechnicien : lesTechniciens)
+//		{
+//			this.cbxTechnicien.addItem(unTechnicien.getIdTech() + " - " + unTechnicien.getNom() + " - " + unTechnicien.getPrenom() );
+//		}
 	}
 }
