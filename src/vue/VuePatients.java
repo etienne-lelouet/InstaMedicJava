@@ -1,4 +1,3 @@
-
 package vue;
 
 import java.awt.Color;
@@ -26,6 +25,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import modele.Modele;
 
 public class VuePatients extends JFrame implements ActionListener, KeyListener {
@@ -51,15 +51,17 @@ public class VuePatients extends JFrame implements ActionListener, KeyListener {
 
         //construction du pannel
         this.unPanel.setBounds(50, 50, 900, 600);
+        this.unPanel.setLayout(null);
         this.unPanel.setBackground(new Color(242, 242, 242));
-
+        this.add(this.unPanel);
+        this.unPanel.setVisible(true);
+        
         //On crée la string de texte du Label
         String textLabel = "Bienvenue Dr. " + prenomMedecin + " " + nomMedecin + ", veuillez selectionner un patient";
-        JLabel Label1 = new JLabel(textLabel);
-        Label1.setBounds(50, 50, 900, 600);
-        unPanel.add(Label1);
-        this.unPanel.setVisible(true);
-        this.add(this.unPanel);
+        JLabel Label1 = new JLabel(textLabel, SwingConstants.CENTER);
+        Label1.setBounds(0, 0, 900, 50);
+        this.unPanel.add(Label1);
+
 
         //On commence à créer la table
         String entetes[] = {"Id Client", "Nom Client", "Prénom Client", "Adresse"};
@@ -70,6 +72,11 @@ public class VuePatients extends JFrame implements ActionListener, KeyListener {
                 return false;
             }
         };
+        //affichage de la jtable dans une scroll table
+        JScrollPane uneScroll = new JScrollPane(this.tableClients);
+        uneScroll.setBounds(100, 50, 700, 540);    //le cadre blanc
+        uneScroll.setBackground(new Color(255, 255, 255));
+        this.unPanel.add(uneScroll);
         this.tableClients.setEnabled(true);
 
         this.tableClients.addMouseListener(new MouseListener() {
@@ -106,11 +113,6 @@ public class VuePatients extends JFrame implements ActionListener, KeyListener {
 
             }
         });
-        //affichage de la jtable dans une scroll table
-        JScrollPane uneScroll = new JScrollPane(this.tableClients);
-        uneScroll.setBounds(110, 120, 780, 400);    //le cadre blanc
-        uneScroll.setBackground(Color.black);
-        this.add(uneScroll);
 
         //changer icone application
         ImageIcon logopetit = new ImageIcon("src/images/logoPetit.png");
