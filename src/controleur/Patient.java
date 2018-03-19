@@ -2,36 +2,52 @@ package controleur;
 
 public class Patient {
 
-    private int idPatient, taille;
-    private String nomPatient, prenomPatient, groupeSanguin, adresse, adressecomp,
-            code_postal, ville, email, telephone, urlphoto;
-    private float poids;
+    private int idPatient, taille, poids;
+    private String nomPatient, prenomPatient, etat_civil, date_naissance, groupeSanguin, adresse, adressecomp,
+            code_postal, Ville, email, telephone, urlphoto;
 
     public Patient() {
-        this.idPatient = this.taille = 0;
-        this.nomPatient = this.prenomPatient = this.groupeSanguin = "";
-        this.poids = 0;
-    }
-
-    public Patient(int taille, String nomPatient,
-            String prenomPatient, String groupeSanguin, float poids) {
         this.idPatient = 0;
-        this.nomPatient = nomPatient;
-        this.prenomPatient = prenomPatient;
-        this.groupeSanguin = groupeSanguin;
-        this.poids = poids;
+        this.taille = 0;
+        this.poids = 0;
+
+        this.etat_civil = "";
+        this.nomPatient = "";
+        this.prenomPatient = "";
+        this.date_naissance = "";
+        this.adresse = "";
+        this.adressecomp = "";
+        this.code_postal = "";
+        this.Ville = "";
+        this.email = "";
+        this.telephone = "";
+        this.urlphoto = "";
+        this.groupeSanguin = "";
     }
 
-    public Patient(int idPatient, int taille, String nomPatient,
+    public Patient(int idPatient, int taille, int poids,
+            String nomPatient, String prenomPatient,
             String etat_civil, String date_naissance,
-            String adresse, String email, String telephone,
-            String urlPhoto,
-            String prenomPatient, String groupeSanguin, float poids) {
+            String adresse, String adressecomp, String code_postal, String Ville,
+            String email, String telephone,
+            String urlPhoto, String groupeSanguin) {
+
         this.idPatient = idPatient;
+        this.taille = taille;
+        this.poids = poids;
+
+        this.etat_civil = etat_civil;
         this.nomPatient = nomPatient;
         this.prenomPatient = prenomPatient;
+        this.date_naissance = date_naissance;
+        this.adresse = adresse;
+        this.adressecomp = adressecomp;
+        this.code_postal = code_postal;
+        this.Ville = Ville;
+        this.email = email;
+        this.telephone = telephone;
+        this.urlphoto = urlPhoto;
         this.groupeSanguin = groupeSanguin;
-        this.poids = poids;
     }
 
     public int getIdPatient() {
@@ -50,6 +66,14 @@ public class Patient {
         this.taille = taille;
     }
 
+    public int getPoids() {
+        return poids;
+    }
+
+    public void setPoids(int poids) {
+        this.poids = poids;
+    }
+
     public String getNomPatient() {
         return nomPatient;
     }
@@ -66,6 +90,22 @@ public class Patient {
         this.prenomPatient = prenomPatient;
     }
 
+    public String getEtat_civil() {
+        return etat_civil;
+    }
+
+    public void setEtat_civil(String etat_civil) {
+        this.etat_civil = etat_civil;
+    }
+
+    public String getDate_naissance() {
+        return date_naissance;
+    }
+
+    public void setDate_naissance(String date_naissance) {
+        this.date_naissance = date_naissance;
+    }
+
     public String getGroupeSanguin() {
         return groupeSanguin;
     }
@@ -74,12 +114,60 @@ public class Patient {
         this.groupeSanguin = groupeSanguin;
     }
 
-    public float getPoids() {
-        return poids;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setPoids(float poids) {
-        this.poids = poids;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getAdressecomp() {
+        return adressecomp;
+    }
+
+    public void setAdressecomp(String adressecomp) {
+        this.adressecomp = adressecomp;
+    }
+
+    public String getCode_postal() {
+        return code_postal;
+    }
+
+    public void setCode_postal(String code_postal) {
+        this.code_postal = code_postal;
+    }
+
+    public String getVille() {
+        return Ville;
+    }
+
+    public void setVille(String Ville) {
+        this.Ville = Ville;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getUrlphoto() {
+        return urlphoto;
+    }
+
+    public void setUrlphoto(String urlphoto) {
+        this.urlphoto = urlphoto;
     }
 
 }

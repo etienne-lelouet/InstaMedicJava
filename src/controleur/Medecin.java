@@ -2,69 +2,67 @@ package controleur;
 
 public class Medecin {
 
-	private static int nbChampsClients = 4;
-	private int idMedecin;
-	private String nom, prenom, specialite;
-	
-	public Medecin()
-	{
-		this.idMedecin = 0;
-		this.nom = this.prenom = this.specialite="";
-	}
-	
-	public Medecin (int idclient, String nom, String prenom, String specialite)
-	{
-		this.idMedecin = idclient;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.specialite = specialite;
-	}
-	public Medecin (String nom, String prenom, String specialite)
-	{
-		this.idMedecin = 0;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.specialite = specialite;
-	}
+    private static int nbChampsClients = 4;
+    private int idMedecin;
+    private String nom, prenom, specialite;
 
-	public static int getNbChampsClients() {
-		return nbChampsClients;
-	}
+    public Medecin() {
+        this.idMedecin = 0;
+        this.nom = this.prenom = this.specialite = "";
+    }
 
-	public static void setNbChampsClients(int nbChampsClients) {
-		Medecin.nbChampsClients = nbChampsClients;
-	}
+    public Medecin(int idclient, String nom, String prenom, String specialite) {
+        this.idMedecin = idclient;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.specialite = specialite;
+    }
 
-	public int getIdMedecin() {
-		return idMedecin;
-	}
+    public Medecin(String nom, String prenom, String specialite) {
+        this.idMedecin = 0;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.specialite = specialite;
+    }
 
-	public void setIdMedecin(int idMedecin) {
-		this.idMedecin = idMedecin;
-	}
+    public static int getNbChampsClients() {
+        return nbChampsClients;
+    }
 
-	public String getNom() {
-		return nom;
-	}
+    public static void setNbChampsClients(int nbChampsClients) {
+        Medecin.nbChampsClients = nbChampsClients;
+    }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+    public int getIdMedecin() {
+        return idMedecin;
+    }
 
-	public String getPrenom() {
-		return prenom;
-	}
+    public void setIdMedecin(int idMedecin) {
+        this.idMedecin = idMedecin;
+    }
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
+    public String getNom() {
+        return nom;
+    }
 
-	public String getSpecialite() {
-		return specialite;
-	}
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-	public void setSpecialite(String specialite) {
-		this.specialite = specialite;
-	}
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getSpecialite() {
+        return specialite;
+    }
+
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
+    }
 
 }

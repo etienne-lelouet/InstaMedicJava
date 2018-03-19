@@ -131,7 +131,7 @@ public class VueConnexion extends JFrame implements ActionListener, KeyListener 
                 //JOptionPane.showMessageDialog(this, "Bienvenue !", "Connexion réussie", JOptionPane.INFORMATION_MESSAGE);
                 //appel de la JFrame generale
                 Main.rendreVisible(false);
-                new VuePatients(MedecinLogged);
+                new VuePatients(MedecinLogged, true);
 
             } else {
                 JOptionPane.showMessageDialog(this, "Identifiants incorrects");
