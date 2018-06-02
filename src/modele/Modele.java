@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import controleur.Medecin;
+import controleur.Ordonnance;
 import controleur.Patient;
 import controleur.Technicien;
 import java.sql.PreparedStatement;
@@ -19,7 +20,7 @@ public class Modele {
                 + " FROM Personne t1, Medecin t2, Specialite t3"
                 + " WHERE t1.idPersonne = t2.idPersonne"
                 + " AND t2.idSpecialite = t3.idSpecialite"
-                + " AND STATUS =2"
+                + " AND STATUS = 2"
                 + " AND login =\"" + login + "\" "
                 + " AND PASSWORD =\"" + mdp + "\"";
 
@@ -63,7 +64,7 @@ public class Modele {
     //Modele des patients
     public static ArrayList<Patient> selectAllPatients(Medecin unMedecin) {
         ArrayList<Patient> lesPatients = new ArrayList<Patient>();
-        String requete = " SELECT t2.*, t3.* FROM lien t1, Personne t2, DonnesBiologiques t3 "
+        String requete = " SELECT t2.*, t3.* FROM lien t1, Personne t2, DonneesBiologiques t3 "
                 + " WHERE t1.idMedecin = " + unMedecin.getIdMedecin()
                 + " AND t1.idPatient = t2.idPersonne AND t1.idPatient = t3.idPersonne ORDER BY nom ASC";
         Bdd uneBdd = new Bdd();
@@ -132,7 +133,7 @@ public class Modele {
 
     public static Patient getPatientById(int id) {
         Patient unPatient = new Patient();
-        String requete = "SELECT t1.*, t2.* FROM Personne t1, DonnesBiologiques t2 WHERE t1.idPersonne = " + id + " AND t2.idPersonne = t1.idPersonne";
+        String requete = "SELECT t1.*, t2.* FROM Personne t1, DonneesBiologiques t2 WHERE t1.idPersonne = " + id + " AND t2.idPersonne = t1.idPersonne";
         Bdd uneBdd = new Bdd();
         try {
             uneBdd.seConnecter();
@@ -238,6 +239,27 @@ public class Modele {
             System.out.println("Erreur : " + exp);
         }
     }
+    
+    
+        public static void insertOrdonnance(Ordonnance uneOrdonnance) {
+        int id = 0;
+        String requete = "INSERT INTO Ordonnance VALUES (null, null, ?, ?, ?);";
+        Bdd uneBdd = new Bdd();
+        try {
+            uneBdd.seConnecter();
+            PreparedStatement ps = uneBdd.getMaConnexion().prepareStatement(requete);
+            ps.setString(1, uneOrdonnance.getContenu());
+            ps.setInt(2, uneOrdonnance.getIdPatient());
+            ps.setInt(3, uneOrdonnance.getIdMedecin());
+            ps.executeUpdate();
+            ps.close();
+            uneBdd.seDeConnceter();
+        } catch (Exception exp) {
+            System.out.println("Erreur : " + requete);
+            System.out.println("Erreur : " + exp);
+        }
+    }
+
 //    /**
 
     /* ********* Modele des Techniciens ****************

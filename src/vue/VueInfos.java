@@ -38,7 +38,8 @@ public class VueInfos extends JPanel implements ActionListener {
     private JPanel panelG = new JPanel();
     private Tableau unTableau;
     private URL URLImg;
-    private JLabel ImgLabel, nomcomplet, date_naissance, adresse, adressecomp, code_postal, ville, telephone, email, groupesanguin, taille, poids;
+    private JLabel ImgLabel, nomcomplet, date_naissance, adresse, adressecomp,
+            code_postal, ville, telephone, email, groupesanguin, taille, poids;
 
     public VueInfos(Patient unPatient) throws MalformedURLException, IOException {
         this.setBounds(0, 20, 1000, 660);
@@ -68,9 +69,18 @@ public class VueInfos extends JPanel implements ActionListener {
 
         String img = "http://163.172.49.216/insta_medic/app/files/" + unPatient.getIdPatient() + "/" + unPatient.getUrlphoto();
         Image image = null;
+        System.out.println(img);
         this.URLImg = new URL(img);
-        image = ImageIO.read(URLImg);
-        System.out.println(image);
+        try
+        {
+           image = ImageIO.read(URLImg); 
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+        
+        
 
         if (image == null) {
             ImageIcon imageUsr = new ImageIcon("src/images/default.jpg");

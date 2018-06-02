@@ -23,13 +23,13 @@ public class VueGeneral extends JFrame implements ActionListener {
 
     //Creation 3 panels
     private static VueInfos uneVueInfos;
-    private static VueTechs uneVueTechs;
     private static VueCommentaire uneVueCommentaire;
+    private static VueOrdonnance uneVueOrdonnance;
     private static Medecin unMedecin;
 
     public VueGeneral(final Medecin unMedecin, Patient unPatient) throws IOException {
         this.uneVueInfos = new VueInfos(unPatient);
-        this.uneVueTechs = new VueTechs();
+        this.uneVueOrdonnance = new VueOrdonnance(unMedecin, unPatient);
         this.uneVueCommentaire = new VueCommentaire(unMedecin, unPatient);
         this.setTitle("Gestion du dossier médical de " + unPatient.getPrenomPatient() + " " + unPatient.getNomPatient());
         this.setLayout(null);
@@ -51,7 +51,7 @@ public class VueGeneral extends JFrame implements ActionListener {
         }
         this.paneMenu.setVisible(true);
         this.add(uneVueInfos);
-        this.add(uneVueTechs);
+        this.add(uneVueOrdonnance);
         this.add(uneVueCommentaire);
 
         //on met la vueinfos comme vue par défaut
@@ -63,15 +63,15 @@ public class VueGeneral extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.tabButton[0]) {
             uneVueInfos.setVisible(true);
-            uneVueTechs.setVisible(false);
+            uneVueOrdonnance.setVisible(false);
             uneVueCommentaire.setVisible(false);
         } else if (e.getSource() == this.tabButton[1]) {
             uneVueInfos.setVisible(false);
-            uneVueTechs.setVisible(false);
+            uneVueOrdonnance.setVisible(false);
             uneVueCommentaire.setVisible(true);
         } else if (e.getSource() == this.tabButton[2]) {
             uneVueInfos.setVisible(false);
-            uneVueTechs.setVisible(false);
+            uneVueOrdonnance.setVisible(true);
             uneVueCommentaire.setVisible(false);
         } else if (e.getSource() == this.tabButton[3]) {
             this.dispose();

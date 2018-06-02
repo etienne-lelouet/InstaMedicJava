@@ -37,6 +37,8 @@ import modele.Modele;
 
 public class VueCommentaire extends JPanel implements ActionListener {
 
+    private Medecin unMedecin;
+    private Patient unPatient;
     private JPanel panelListe = new JPanel();
     private JPanel panelModifs = new JPanel();
     private JTable tableMessages;
@@ -58,6 +60,10 @@ public class VueCommentaire extends JPanel implements ActionListener {
     private JLabel labelArea = new JLabel("Corps du message : ");
 
     public VueCommentaire(Medecin unMedecin, Patient unPatient) {
+
+        this.unMedecin = unMedecin;
+        this.unPatient = unPatient;
+
         this.setBounds(0, 20, 1000, 660);
         this.setLayout(null);
         this.setBackground(new Color(242, 242, 242));
@@ -181,8 +187,8 @@ public class VueCommentaire extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.btAjouter && emptyfields_insert()) {
 
-            Commentaire unCommentaire = new Commentaire(Integer.parseInt(txtIdPatientActuel.getText()),
-                    Integer.parseInt(txtIdMedecinActuel.getText()), areaMessage.getText());
+            Commentaire unCommentaire = new Commentaire(unPatient.getIdPatient(),
+                    unMedecin.getIdMedecin(), areaMessage.getText());
 
             int id = Modele.insertCommentaire(unCommentaire);
             JOptionPane.showMessageDialog(this, "Insertion réussie");
@@ -190,19 +196,20 @@ public class VueCommentaire extends JPanel implements ActionListener {
             txtNom.setText(tableMessages.getValueAt(0, 1).toString());
             txtPrenom.setText(tableMessages.getValueAt(0, 2).toString());
             areaMessage.setText(tableMessages.getValueAt(0, 3).toString());
-            Object data[] = {id, txtPrenomMedecinActuel.getText(), txtPrenomMedecinActuel.getText(), unCommentaire.getContenu()};
-            this.unTableau.add(data);
+            Object data[][] = this.recupererMessages(unPatient);
+            unTableau.setDonnees(data);
 
         } else if (e.getSource() == this.btSupprimer && emptyfields()) {
 
             if (Modele.verifyAuthorization(Integer.parseInt(txtIdCommentaires.getText()), Integer.parseInt(txtIdMedecinActuel.getText()))) {
 
-                Commentaire unCommentaire = new Commentaire(Integer.parseInt(txtIdPatientActuel.getText()),
-                        Integer.parseInt(txtIdMedecinActuel.getText()), areaMessage.getText());
+                Commentaire unCommentaire = new Commentaire(Integer.parseInt(txtIdCommentaires.getText()),
+                        unPatient.getIdPatient(), unMedecin.getIdMedecin(), areaMessage.getText(),
+                        unMedecin.getNom(), unMedecin.getPrenom());
 
                 Modele.deleteCommentaire(unCommentaire);
-                int rowIndex = tableMessages.getSelectedRow();
-                unTableau.remove(rowIndex);
+                Object data[][] = this.recupererMessages(unPatient);
+                unTableau.setDonnees(data);
                 JOptionPane.showMessageDialog(this, "Suppression effectuée");
                 txtIdCommentaires.setText(tableMessages.getValueAt(0, 0).toString());
                 txtNom.setText(tableMessages.getValueAt(0, 1).toString());
@@ -217,16 +224,14 @@ public class VueCommentaire extends JPanel implements ActionListener {
             if (Modele.verifyAuthorization(Integer.parseInt(txtIdCommentaires.getText()), Integer.parseInt(txtIdMedecinActuel.getText()))) {
 
                 Commentaire unCommentaire = new Commentaire(Integer.parseInt(txtIdCommentaires.getText()),
-                        Integer.parseInt(txtIdPatientActuel.getText()), Integer.parseInt(txtIdMedecinActuel.getText()), areaMessage.getText(),
-                        txtNomMedecinActuel.getText().toString(), txtPrenomMedecinActuel.getText().toString());
+                        unPatient.getIdPatient(), unMedecin.getIdMedecin(), areaMessage.getText(),
+                        unMedecin.getNom(), unMedecin.getPrenom());
 
                 Modele.updateCommentaire(unCommentaire);
                 JOptionPane.showMessageDialog(this, "Mise a jour effectuée");
 
-                Object data[] = {Integer.parseInt(txtIdCommentaires.getText()), txtPrenomMedecinActuel.getText(), txtNomMedecinActuel.getText(),
-                    unCommentaire.getContenu()};
-                int rowIndex = tableMessages.getSelectedRow();
-                this.unTableau.update(rowIndex, data);
+                Object data[][] = this.recupererMessages(unPatient);
+                unTableau.setDonnees(data);
 
                 txtIdCommentaires.setText(tableMessages.getValueAt(0, 0).toString());
                 txtNom.setText(tableMessages.getValueAt(0, 1).toString());

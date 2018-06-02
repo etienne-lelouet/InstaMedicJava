@@ -1,6 +1,7 @@
 //3
 package controleur;
 
+import javax.swing.JOptionPane;
 import vue.VueConnexion;
 
 public class Main {
@@ -13,7 +14,15 @@ public class Main {
 
     public static void main(String[] args) {
         Main.uneConnexion = new VueConnexion();
+    }
 
+    public static void infoBox(String infoMessage, String titleBar) {
+        int result = JOptionPane.showConfirmDialog(null,
+                infoMessage,
+                titleBar, JOptionPane.YES_NO_CANCEL_OPTION);
+        if (result == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }
 
 }

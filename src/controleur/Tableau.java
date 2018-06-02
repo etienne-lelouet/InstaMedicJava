@@ -29,41 +29,11 @@ public class Tableau extends AbstractTableModel {
         return donnees[rowIndex][columnIndex];
     }
 
-    public void add(Object[] data) {
-        Object[][] newDonnees = new Object[this.donnees.length + 1][];
-        int i;
-        for (i = 0; i < this.donnees.length; i++) {
-            newDonnees[i] = this.donnees[i];
-        }
-        newDonnees[this.donnees.length] = data;
-        this.donnees = newDonnees;
-
+    public void setDonnees(Object[][] donnees)
+    {
+        this.donnees = donnees;
         this.fireTableDataChanged();
     }
-
-    public void remove(int rowIndex) {
-        Object[][] newDonnees = new Object[this.donnees.length - 1][];
-        int i, j = 0;
-        for (i = 0; i < this.donnees.length; i++) {
-            if (i != rowIndex) {
-                newDonnees[j++] = this.donnees[i];
-            }
-        }
-        this.donnees = newDonnees;
-        this.fireTableDataChanged();
-    }
-
-    public void update(int rowIndex, Object data[]) {
-        Object[][] newDonnees = new Object[this.donnees.length][];
-        for (int i = 0; i < this.donnees.length; i++) {
-            if (i != rowIndex) {
-                newDonnees[i] = this.donnees[i];
-            } else {
-                newDonnees[i] = data;
-            }
-        }
-        this.donnees = newDonnees;
-        this.fireTableDataChanged();
-    }
+    
 
 }
