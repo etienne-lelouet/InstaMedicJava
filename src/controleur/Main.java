@@ -19,8 +19,8 @@ public class Main {
     public static void infoBox(String infoMessage, String titleBar) {
         int result = JOptionPane.showConfirmDialog(null,
                 infoMessage,
-                titleBar, JOptionPane.YES_NO_CANCEL_OPTION);
-        if (result == JOptionPane.YES_OPTION) {
+                titleBar, JOptionPane.YES_OPTION);
+        if (result == JOptionPane.YES_OPTION || result == JOptionPane.NO_OPTION) {
             System.exit(0);
         }
     }

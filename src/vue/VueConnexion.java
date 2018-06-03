@@ -46,7 +46,7 @@ public class VueConnexion extends JFrame implements ActionListener, KeyListener 
         this.unPanel.setLayout(new GridLayout(3, 2));
         this.unPanel.add(new JLabel("Login : "));
         this.unPanel.add(this.txtLogin);
-        this.unPanel.add(new JLabel("MDP : "));
+        this.unPanel.add(new JLabel("Mot de passe : "));
         this.unPanel.add(this.pwdMdp);
         this.unPanel.add(this.btAnnuler);
         this.unPanel.add(this.btSeConnecter);

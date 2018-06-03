@@ -80,15 +80,13 @@ public class VueInfos extends JPanel implements ActionListener {
             System.out.println(e);
         }
         
-        
-
         if (image == null) {
             ImageIcon imageUsr = new ImageIcon("src/images/default.jpg");
             Image imageToResize = imageUsr.getImage();
             Image newimg = imageToResize.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
             imageUsr = new ImageIcon(newimg);
             JLabel ImgLabel = new JLabel(imageUsr);
-            ImgLabel.setBounds(40, 50, 150, 150);
+            ImgLabel.setBounds(10, 10, 150, 150);
             panelG.add(ImgLabel);
         } else {
             ImageIcon imageUsr = new ImageIcon(image);

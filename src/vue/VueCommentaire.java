@@ -98,7 +98,6 @@ public class VueCommentaire extends JPanel implements ActionListener {
 
             @Override
             public void mouseClicked(MouseEvent m) {
-                System.out.println(m.getClickCount());
                 int ligne = tableMessages.getSelectedRow();
                 txtIdCommentaires.setText(tableMessages.getValueAt(ligne, 0).toString());
                 txtNom.setText(tableMessages.getValueAt(ligne, 1).toString());
@@ -191,14 +190,9 @@ public class VueCommentaire extends JPanel implements ActionListener {
                     unMedecin.getIdMedecin(), areaMessage.getText());
 
             int id = Modele.insertCommentaire(unCommentaire);
-            JOptionPane.showMessageDialog(this, "Insertion réussie");
-            txtIdCommentaires.setText(tableMessages.getValueAt(0, 0).toString());
-            txtNom.setText(tableMessages.getValueAt(0, 1).toString());
-            txtPrenom.setText(tableMessages.getValueAt(0, 2).toString());
-            areaMessage.setText(tableMessages.getValueAt(0, 3).toString());
             Object data[][] = this.recupererMessages(unPatient);
             unTableau.setDonnees(data);
-
+            JOptionPane.showMessageDialog(this, "Insertion réussie");
         } else if (e.getSource() == this.btSupprimer && emptyfields()) {
 
             if (Modele.verifyAuthorization(Integer.parseInt(txtIdCommentaires.getText()), Integer.parseInt(txtIdMedecinActuel.getText()))) {
@@ -211,10 +205,6 @@ public class VueCommentaire extends JPanel implements ActionListener {
                 Object data[][] = this.recupererMessages(unPatient);
                 unTableau.setDonnees(data);
                 JOptionPane.showMessageDialog(this, "Suppression effectuée");
-                txtIdCommentaires.setText(tableMessages.getValueAt(0, 0).toString());
-                txtNom.setText(tableMessages.getValueAt(0, 1).toString());
-                txtPrenom.setText(tableMessages.getValueAt(0, 2).toString());
-                areaMessage.setText(tableMessages.getValueAt(0, 3).toString());
             } else {
                 JOptionPane.showMessageDialog(this, "Vous n'avez pas les droits suffisants pour supprimer ce message !");
             }
@@ -232,11 +222,6 @@ public class VueCommentaire extends JPanel implements ActionListener {
 
                 Object data[][] = this.recupererMessages(unPatient);
                 unTableau.setDonnees(data);
-
-                txtIdCommentaires.setText(tableMessages.getValueAt(0, 0).toString());
-                txtNom.setText(tableMessages.getValueAt(0, 1).toString());
-                txtPrenom.setText(tableMessages.getValueAt(0, 2).toString());
-                areaMessage.setText(tableMessages.getValueAt(0, 3).toString());
             } else {
                 JOptionPane.showMessageDialog(this, "Vous n'avez pas les droits suffisants pour supprimer ce message !");
             }

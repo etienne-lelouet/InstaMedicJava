@@ -1,5 +1,6 @@
 package modele;
 
+import controleur.Main;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -12,7 +13,7 @@ public class Bdd {
 
     public Bdd() {
         this.serveur = "163.172.49.216";
-        this.bdd = "Clinique";
+        this.bdd = "clinique";
         this.user = "wef";
         this.mdp = "ppe2018wef";
         this.maConnexion = null;
@@ -32,8 +33,10 @@ public class Bdd {
         try {
             this.maConnexion = DriverManager.getConnection(url, this.user, this.mdp);
         } catch (SQLException exp) {
-            System.out.println(url);
-            System.out.println(exp);
+            System.out.println("erreur conn : "+exp);
+        }
+        if (this.maConnexion == null) {
+            Main.infoBox("Impossible de se connecter à la base de données", "Erreur");
         }
     }
 

@@ -50,6 +50,14 @@ public class Patient {
         this.groupeSanguin = groupeSanguin;
     }
 
+    public Patient(int idPatient, String nomPatient,
+            String prenomPatient, String date_naissance) {
+        this.idPatient = idPatient;
+        this.nomPatient = nomPatient;
+        this.prenomPatient = prenomPatient;
+        this.date_naissance = date_naissance;
+    }
+
     public int getIdPatient() {
         return idPatient;
     }

@@ -50,6 +50,8 @@ public class VuePatients extends JFrame implements ActionListener, KeyListener {
         //On initialise la JFRAME
         this.setTitle("Selectionnez un Patient");
         this.setBounds(100, 0, 1000, 700);//résolution de l'écran
+        
+        
         //Layout: matrice
         this.setLayout(null);
         this.setResizable(false);
@@ -89,12 +91,9 @@ public class VuePatients extends JFrame implements ActionListener, KeyListener {
 
             @Override
             public void mouseClicked(MouseEvent m) {
-                System.out.println(m.getClickCount());
                 int ligne = tableClients.getSelectedRow();
                 int idClient = Integer.parseInt(tableClients.getValueAt(ligne, 0).toString());
-                System.out.println(idClient);
                 Patient PatientClicked = Modele.getPatientById(idClient);
-                System.out.println(PatientClicked.getEmail());
                 final Component source = m.getComponent();
                 final JFrame frame = (JFrame) SwingUtilities.getRoot(source);
                 frame.dispose();
