@@ -2,14 +2,13 @@ package controleur;
 
 public class Patient {
 
-    private int idPatient, taille, poids;
+    private int idPatient, taille;
     private String nomPatient, prenomPatient, etat_civil, date_naissance, groupeSanguin, adresse, adressecomp,
             code_postal, Ville, email, telephone, urlphoto;
 
     public Patient() {
         this.idPatient = 0;
         this.taille = 0;
-        this.poids = 0;
 
         this.etat_civil = "";
         this.nomPatient = "";
@@ -25,7 +24,7 @@ public class Patient {
         this.groupeSanguin = "";
     }
 
-    public Patient(int idPatient, int taille, int poids,
+    public Patient(int idPatient, int taille,
             String nomPatient, String prenomPatient,
             String etat_civil, String date_naissance,
             String adresse, String adressecomp, String code_postal, String Ville,
@@ -34,7 +33,6 @@ public class Patient {
 
         this.idPatient = idPatient;
         this.taille = taille;
-        this.poids = poids;
 
         this.etat_civil = etat_civil;
         this.nomPatient = nomPatient;
@@ -72,14 +70,6 @@ public class Patient {
 
     public void setTaille(int taille) {
         this.taille = taille;
-    }
-
-    public int getPoids() {
-        return poids;
-    }
-
-    public void setPoids(int poids) {
-        this.poids = poids;
     }
 
     public String getNomPatient() {

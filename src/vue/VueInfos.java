@@ -148,10 +148,10 @@ public class VueInfos extends JPanel implements ActionListener {
         Taille.setBounds(10, 60, 300, 20);
         panelBio.add(Taille);
 
-        String StrPoids = "Poids : " + unPatient.getPoids() + " Kg";
+        /*String StrPoids = "Poids : " + unPatient.getPoids() + " Kg";
         JLabel Poids = new JLabel(StrPoids, SwingConstants.LEFT);
         Poids.setBounds(10, 90, 300, 20);
-        panelBio.add(Poids);
+        panelBio.add(Poids);*/
 
         this.setVisible(false);
     }

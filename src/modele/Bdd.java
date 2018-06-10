@@ -12,7 +12,7 @@ public class Bdd {
     private Connection maConnexion;
 
     public Bdd() {
-        this.serveur = "163.172.49.216";
+        this.serveur = "localhost";
         this.bdd = "clinique";
         this.user = "wef";
         this.mdp = "ppe2018wef";

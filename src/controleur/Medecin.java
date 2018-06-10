@@ -2,7 +2,6 @@ package controleur;
 
 public class Medecin {
 
-    private static int nbChampsClients = 4;
     private int idMedecin;
     private String nom, prenom, specialite;
 
@@ -23,14 +22,6 @@ public class Medecin {
         this.nom = nom;
         this.prenom = prenom;
         this.specialite = specialite;
-    }
-
-    public static int getNbChampsClients() {
-        return nbChampsClients;
-    }
-
-    public static void setNbChampsClients(int nbChampsClients) {
-        Medecin.nbChampsClients = nbChampsClients;
     }
 
     public int getIdMedecin() {

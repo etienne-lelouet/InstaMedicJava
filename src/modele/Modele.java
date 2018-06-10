@@ -132,7 +132,6 @@ public class Modele {
             ResultSet unRes = unStat.executeQuery();
             while (unRes.next()) {
                 int idPatient = unRes.getInt("idPersonne");
-                int poids = unRes.getInt("poids");
                 int taille = unRes.getInt("Taille");
                 String etat_civil = unRes.getString("etat_civil");
                 String nom = unRes.getString("nom");
@@ -146,10 +145,11 @@ public class Modele {
                 String email = unRes.getString("email");
                 String urlphoto = unRes.getString("urlphoto");
                 String GroupeSanguin = unRes.getString("GroupeSanguin");
-                unPatient = new Patient(idPatient, taille, poids, nom, prenom, etat_civil, date_naissance, adresse, adressecomp, code_postal, Ville, email, telephone, urlphoto, GroupeSanguin);
+                unPatient = new Patient(idPatient, taille, nom, prenom, etat_civil, date_naissance, adresse, adressecomp, code_postal, Ville, email, telephone, urlphoto, GroupeSanguin);
             }
         } catch (SQLException e) {
             System.out.println(requete);
+            System.out.println(e);
         }
         return unPatient;
     }
